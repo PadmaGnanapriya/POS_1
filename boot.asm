@@ -161,9 +161,9 @@ jmp     START
      ;memory location ‘es:bx’
      ;*************************************************************************
      ReadSectors:
-     .MAIN
+     .MAIN:
           mov     di, 0x0005                          ; five retries for error
-     .SECTORLOOP
+     .SECTORLOOP:
           push    ax
           push    bx
           push    cx
@@ -184,7 +184,7 @@ jmp     START
           pop     ax
           jnz     .SECTORLOOP                         ; attempt to read again
           int     0x18
-     .SUCCESS
+     .SUCCESS:
           mov     si, msgProgress
           call    DisplayMessage
           pop     cx
